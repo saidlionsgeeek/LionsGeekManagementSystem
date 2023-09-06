@@ -19,11 +19,25 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'lastname',
+        'age',
+        'cin',
+        'gender',
+        'phone',
+        'type',
+        'history',
         'email',
         'password',
     ];
 
-    /**
+    public function roles(){
+        return $this->belongsToMany(Role::class , "user_roles");
+    }
+
+// *reservation class
+public function reservationclasses(){
+    return $this->hasMany(ReservationClass::class);
+}    /**
      * The attributes that should be hidden for serialization.
      *
      * @var array<int, string>
